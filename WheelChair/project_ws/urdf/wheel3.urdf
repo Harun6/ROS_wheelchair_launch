@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="wheeldiffdrive">
+
+
+<!--                    DEFINING MATERIALS   -->
+  <material name="blue">
+    <color rgba="0 0 1 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+<material name="red">
+    <color rgba=" 0.5 0.2 0.8 1"/>
+  </material>
+
+<!--Defining the robot-->
+<!--                      BASE LINK            -->
+    <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.215897452397763 -0.466115278224488 -0.406633769007423"
+        rpy="0 0 0" />
+      <mass
+        value="1.16212370053717" />
+      <inertia
+        ixx="0.308297541964297"
+        ixy="-3.58520428121968E-07"
+        ixz="4.87684354694172E-06"
+        iyy="0.323504290432657"
+        iyz="-0.0485683019754604"
+        izz="0.281374166804536" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 -1.570796" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/chair_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/chair_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+    
+<!--                    RIGHT FRONT WHEEL                       -->
+    <link
+    name="right_front_wheel">
+    <inertial>
+      <origin
+        xyz="3.68982622234171E-13 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="4.09127347260337" />
+      <inertia
+        ixx="0.00171792777524043"
+        ixy="2.83050865876848E-20"
+        ixz="-1.13478840286474E-19"
+        iyy="0.000880037934920852"
+        iyz="2.19202862326551E-20"
+        izz="0.000880037934920852" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/right_front_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/right_front_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <gazebo reference="right_front_wheel">
+    <material>Gazebo/White</material>
+  </gazebo>
+  
+  
+      <joint name="joint_base_to_right_front_wheel" type="continuous">
+    <origin
+      xyz="0.55563 -0.4318 -0.79375"
+      rpy="0 0 1.570796" /><!--0.4318 0.55563-->
+    <axis xyz="1 0 0" rpy="0 0 0" />  
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>
+    </joint>
+    
+    <!--                    LEFT FRONT WHEEL                       -->
+    <link
+    name="left_front_wheel">
+    <inertial>
+      <origin
+        xyz="3.68919128075658E-13 1.11022302462516E-16 -1.11022302462516E-16"
+        rpy="0 0 0" />
+      <mass
+        value="4.09127347260337" />
+      <inertia
+        ixx="0.00171792777524043"
+        ixy="-3.04628631784685E-20"
+        ixz="-4.66323070387447E-20"
+        iyy="0.000880037934920854"
+        iyz="-9.93650710829319E-20"
+        izz="0.000880037934920854" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/left_front_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/left_front_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <gazebo reference="left_front_wheel">
+    <material>Gazebo/White</material>
+    </gazebo>
+    
+          <!--           JOINT BASE TO LEFT FRONT WHEEL  -->
+
+    <joint name="joint_base_to_left_front_wheel" type="continuous">
+    <origin
+      xyz="0.55563 0 -0.79375"
+      rpy="0 0 1.570796" />
+    <axis xyz="1 0 0" rpy="0 0 0" />  
+    <parent link="base_link"/>
+    <child link="left_front_wheel"/>
+    </joint>    
+
+
+    <!--                    RIGHT BACK WHEEL                       -->
+    <link
+    name="right_back_wheel">
+    <inertial>
+      <origin
+        xyz="0.0469427212195542 0 5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="4.09127347260337" />
+      <inertia
+        ixx="0.141718020445608"
+        ixy="2.73584332854114E-18"
+        ixz="-4.77994102978222E-18"
+        iyy="0.0710324578470619"
+        iyz="2.49366499671666E-17"
+        izz="0.0710324578470619" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/right_back_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/right_back_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <gazebo reference="right_back_wheel">
+    <material>Gazebo/White</material>
+  </gazebo>
+  
+          <!--           JOINT BASE TO RIGHT BACK WHEEL  -->
+    <joint name="joint_base_to_right_back_wheel" type="continuous">
+    <origin
+      xyz="0.1524 -0.4572 -0.5842"
+      rpy="0 0 -1.570796" />
+    <axis xyz="-1 0 0"  rpy="0 0 0"/>  
+    <parent link="base_link"/> 
+    <child link="right_back_wheel"/>
+    </joint>
+    
+        <!--                    LEFT BACK WHEEL                       -->
+    <link
+    name="left_back_wheel">
+    <inertial>
+      <origin
+        xyz="0.0469427212195542 5.55111512312578E-17 0"
+        rpy="0 0 0" />
+      <mass
+        value="4.09127347260337" />
+      <inertia
+        ixx="0.141718020445608"
+        ixy="-7.69093859733278E-19"
+        ixz="-3.91372571951635E-18"
+        iyy="0.0710324578470619"
+        iyz="-4.85722573273506E-17"
+        izz="0.071032457847062" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/left_back_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://project_ws/meshes/left_back_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="left_back_wheel">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+      <!--           JOINT BASE TO LEFT BACK WHEEL    -->
+    <joint name="joint_base_to_left_back_wheel" type="continuous">
+    <origin
+      xyz="0.1524 0.0254 -0.5842"
+      rpy="0 0 1.570796" />
+    <axis xyz="1 0 0" rpy="0 0 0" />  
+    <parent link="base_link"/>
+    <child link="left_back_wheel"/>
+    </joint>
+    
+    <!--                       ROS CONTROL      -->
+<gazebo>
+  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+    <updateRate>100.0</updateRate>
+    <robotNamespace>vehiclediffdrive</robotNamespace> 
+    <leftFrontJoint>joint_base_to_left_front_wheel</leftFrontJoint>
+    <rightFrontJoint>joint_base_to_right_front_wheel</rightFrontJoint>
+    <leftRearJoint>joint_base_to_left_back_wheel</leftRearJoint>
+    <rightRearJoint>joint_base_to_right_back_wheel</rightRearJoint>
+    <wheelSeparation>0.2</wheelSeparation>
+    <wheelDiameter>0.14</wheelDiameter>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <torque>20</torque>
+    <commandTopic>cmd_vel</commandTopic>
+    <broadcastTF>true</broadcastTF>
+  </plugin>
+</gazebo>
+
+</robot>
+
